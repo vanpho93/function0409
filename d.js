@@ -1,7 +1,8 @@
 function inHinh1(soDong) {
     for(let i = 0; i < soDong; i++) {
         let str = '';
-        for(let j = 0; j < soDong; j++) {
+        const soCot = soDong;
+        for(let j = 0; j < soCot; j++) {
             const dk = j >= soDong -1 - i;
             str += dk ? '*' : ' ';
         }
@@ -12,7 +13,8 @@ function inHinh1(soDong) {
 function inHinh2(soDong) {
     for(let i = 0; i < soDong; i++) {
         let str = '';
-        for(let j = 0; j < soDong; j++) {
+        const soCot = soDong;
+        for(let j = 0; j < soCot; j++) {
             const dk = j <= i;
             str += dk ? '*' : ' ';
         }
@@ -23,7 +25,8 @@ function inHinh2(soDong) {
 function inHinh3(soDong) {
     for(let i = 0; i < soDong; i++) {
         let str = '';
-        for(let j = 0; j < soDong; j++) {
+        let soCot = soDong;
+        for(let j = 0; j < soCot; j++) {
             const dk = j >= i;
             str += dk ? '*' : ' ';
         }
@@ -43,10 +46,11 @@ function inHinh4(soDong) {
     }
 }
 
-function inHinh(soDong, checkPoint) {
+function inHinh(soDong, checkPoint, getColumns) {
     for(let i = 0; i < soDong; i++) {
         let str = '';
-        for(let j = 0; j < soDong; j++) {
+        let soCot = getColumns ? getColumns(soDong) : soDong;
+        for(let j = 0; j < soCot; j++) {
             const dk = checkPoint(i, j, soDong);
             str += dk ? '*' : ' ';
         }
@@ -54,6 +58,7 @@ function inHinh(soDong, checkPoint) {
     }
 }
 
-inHinh(4, (i, j, soDong) => j >= soDong - 1 - i);
-inHinh(5, (i, j) => j <= i);
+// inHinh(4, (i, j, soDong) => j >= soDong - 1 - i);
+// inHinh(5, (i, j) => j <= i);
 inHinh(5, (i, j) => j >= i);
+// inHinh(5, (i, j, soDong) => Math.abs(j - (soDong - 1)) <= i, soDong => soDong * 2);
