@@ -42,3 +42,18 @@ function inHinh4(soDong) {
         console.log(str);
     }
 }
+
+function inHinh(soDong, checkPoint) {
+    for(let i = 0; i < soDong; i++) {
+        let str = '';
+        for(let j = 0; j < soDong; j++) {
+            const dk = checkPoint(i, j, soDong);
+            str += dk ? '*' : ' ';
+        }
+        console.log(str);
+    }
+}
+
+inHinh(4, (i, j, soDong) => j >= soDong - 1 - i);
+inHinh(5, (i, j) => j <= i);
+inHinh(5, (i, j) => j >= i);
